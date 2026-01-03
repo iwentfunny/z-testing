@@ -1,10 +1,7 @@
-/* ===============================
-   GENERAL
-================================ */
 body {
   background: #0b0b0f;
   color: #f5f5dc;
-  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Serif", "Segoe UI", Arial, sans-serif;
   margin: 0;
 }
 
@@ -31,9 +28,6 @@ h1 {
   color: #ffd700;
 }
 
-/* ===============================
-   TABLE
-================================ */
 .table {
   margin: 20px;
 }
@@ -55,9 +49,6 @@ h1 {
   color: #aaa;
 }
 
-/* ===============================
-   TIERS PAGE
-================================ */
 .tiers {
   display: flex;
   gap: 12px;
@@ -75,9 +66,10 @@ h2 {
   color: #ffd700;
 }
 
-/* ===============================
-   PLAYER MODAL
-================================ */
+.hidden {
+  display: none;
+}
+
 #player-modal {
   position: fixed;
   top: 0;
@@ -112,11 +104,7 @@ h2 {
   color: #ffd700;
 }
 
-#modal-body {
-  margin-top: 16px;
-}
-
-.modal-badge {
+.modal-badge, .badge {
   display: inline-block;
   padding: 4px 7px;
   margin: 3px 4px 3px 0;
@@ -124,59 +112,11 @@ h2 {
   font-size: 12px;
   font-weight: 600;
   color: #0a0a0a;
-}
-
-/* ===============================
-   TIER BADGES
-================================ */
-.badge {
-  display: inline-block;
-  padding: 5px 10px;
-  margin: 4px 4px 4px 0;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  color: #0b0b0b;
   background: #d4af37;
-  box-shadow: 0 2px 4px rgba(212, 175, 55, 0.5);
+  cursor: pointer;
 }
 
 .badge:hover {
   transform: translateY(-3px);
   box-shadow: 0 0 10px #ffd700, 0 4px 8px rgba(212,175,55,0.7);
-  background: linear-gradient(135deg, #ffd700, #e6c200);
-}
-
-.badge.HT1, .badge.HT2, .badge.HT3, .badge.HT4, .badge.HT5 {
-  background: #ffd700;
-}
-
-.badge.LT1, .badge.LT2, .badge.LT3, .badge.LT4, .badge.LT5 {
-  background: #bfa12e;
-}
-
-/* ===============================
-   RESPONSIVE DESIGN
-================================ */
-@media (max-width: 1024px) {
-  .tiers { flex-direction: column; }
-}
-
-@media (max-width: 768px) {
-  .row { grid-template-columns: 40px 1fr 1fr; padding: 10px; }
-  .row span:nth-child(3),
-  .row span:nth-child(4),
-  .row span:nth-child(5) { display: block; font-size: 12px; }
-  .topbar { flex-direction: column; align-items: flex-start; gap: 8px; }
-  input, select { width: 100%; }
-  h1 { font-size: 20px; }
-}
-
-@media (max-width: 480px) {
-  .row { grid-template-columns: 1fr; padding: 8px; }
-  .row span { display: block; margin-bottom: 4px; }
-  .tiers .tier { padding: 10px; }
-  .badge { font-size: 11px; padding: 4px 6px; }
 }
