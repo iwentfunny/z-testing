@@ -1,7 +1,83 @@
 /* ===============================
+   GENERAL
+================================ */
+body {
+  background: #0b0b0f;
+  color: #f5f5dc;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #0a0f1f;
+  border-bottom: 2px solid #d4af37;
+}
+
+input, select {
+  background: #111;
+  color: #ffd700;
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+h1 {
+  margin: 0;
+  color: #ffd700;
+}
+
+/* ===============================
+   TABLE
+================================ */
+.table {
+  margin: 20px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 50px 1fr 2fr 80px 3fr;
+  padding: 12px;
+  border-bottom: 1px solid #222;
+}
+
+.row:hover {
+  background: #14141c;
+  cursor: pointer;
+}
+
+.header {
+  font-weight: bold;
+  color: #aaa;
+}
+
+/* ===============================
+   TIERS PAGE
+================================ */
+.tiers {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+}
+
+.tier {
+  flex: 1;
+  background: #0f1b2d;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+h2 {
+  color: #ffd700;
+}
+
+/* ===============================
    PLAYER MODAL
 ================================ */
-
 #player-modal {
   position: fixed;
   top: 0;
@@ -48,4 +124,35 @@
   font-size: 12px;
   font-weight: 600;
   color: #0a0a0a;
+}
+
+/* ===============================
+   TIER BADGES
+================================ */
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 4px 4px 4px 0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: #0b0b0b;
+  background: #d4af37;
+  box-shadow: 0 2px 4px rgba(212, 175, 55, 0.5);
+}
+
+.badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px #ffd700, 0 4px 8px rgba(212,175,55,0.7);
+  background: linear-gradient(135deg, #ffd700, #e6c200);
+}
+
+.badge.HT1, .badge.HT2, .badge.HT3, .badge.HT4, .badge.HT5 {
+  background: #ffd700;
+}
+
+.badge.LT1, .badge.LT2, .badge.LT3, .badge.LT4, .badge.LT5 {
+  background: #bfa12e;
 }
