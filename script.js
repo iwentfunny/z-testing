@@ -1,61 +1,83 @@
-const TIER_POINTS = {
-  HT1:60, LT1:45, HT2:30, LT2:20,
-  HT3:10, LT3:6, HT4:4, LT4:3,
-  HT5:2, LT5:1
-};
+document.addEventListener("DOMContentLoaded", () => {
+  const TIER_POINTS = {
+    HT1: 60, LT1: 45,
+    HT2: 30, LT2: 20,
+    HT3: 10, LT3: 6,
+    HT4: 4,  LT4: 3,
+    HT5: 2,  LT5: 1
+  };
 
-// Modal setup
-const modal = document.getElementById("player-modal");
-const modalBody = document.getElementById("modal-body");
-const closeModal = document.getElementById("close-modal");
-if (modal) modal.classList.add("hidden");
-if (closeModal) closeModal.onclick = () => modal.classList.add("hidden");
-if (modal) modal.onclick = e => { if(e.target===modal) modal.classList.add("hidden"); }
+  const modal = document.getElementById("player-modal");
+  const modalBody = document.getElementById("modal-body");
+  const closeModal = document.getElementById("close-modal");
 
-function calculatePoints(player){
-  return Object.values(player.tiers).reduce((t,v)=>t+(TIER_POINTS[v]||0),0);
-}
+  if (modal) modal.classList.add("hidden");
 
-function alertPlayer(p){
-  if(!modal||!modalBody) return;
-  modalBody.innerHTML = `<h2>${p.name}</h2>
-  <p><strong>Rank:</strong> ${p.rank}</p>
-  <p><strong>Region:</strong> ${p.region}</p>
-  <p><strong>Overall:</strong> ${p.overall} (${p.points} points)</p>
-  <p><strong>Tiers:</strong> ${Object.entries(p.tiers).map(t=>`${t[0]}:${t[1]}`).join(", ")}</p>`;
-  modal.classList.remove("hidden");
-}
+  if (closeModal) closeModal.onclick = () => modal.classList.add("hidden");
+  if (modal) modal.onclick = (e) => { if(e.target===modal) modal.classList.add("hidden"); }
 
-function setupSearch(players){
-  const input=document.getElementById("search");
-  if(!input) return;
-  input.addEventListener("change",e=>{
-    const found=players.find(p=>p.name.toLowerCase()===e.target.value.toLowerCase());
-    if(found) alertPlayer(found);
-  });
-}
+  function calculatePoints(player) {
+    return Object.values(player.tiers).reduce((total, tier) => total + (TIER_POINTS[tier] || 0), 0);
+  }
 
-function renderOverall(players){
-  const list=document.getElementById("overall-list");
-  if(!list) return;
-  players.sort((a,b)=>b.points-a.points).slice(0,50).forEach(p=>{
-    const div=document.createElement("div");
-    div.className="row";
-    div.innerHTML=`<span>${p.overall}</span>
-      <span>${p.name}</span>
-      <span>${p.rank} (${p.points} pts)</span>
-      <span>${p.region}</span>
-      <span>${Object.entries(p.tiers).map(t=>`${t[1]}:${t[0]}`).join(", ")}</span>`;
-    div.onclick=()=>alertPlayer(p);
-    list.appendChild(div);
-  });
-}
+  function getRankTitle(points) {
+    if (points >= 400) return "Combat Grandmaster";
+    if (points >= 250) return "Combat Master";
+    if (points >= 100) return "Combat Ace";
+    if (points >= 50)  return "Combat Specialist";
+    if (points >= 20)  return "Combat Cadet";
+    return "Combat Novice";
+  }
 
-fetch("data/players.json")
-  .then(res=>res.json())
-  .then(players=>{
-    players.forEach(p=>p.points=calculatePoints(p));
-    players.sort((a,b)=>b.points-a.points).forEach((p,i)=>p.overall=i+1);
-    renderOverall(players);
-    setupSearch(players);
-  });
+  function alertPlayer(p) {
+    if (!modal || !modalBody) return;
+    modalBody.innerHTML = `
+      <p><strong>${p.name}</strong></p>
+      <p>${getRankTitle(calculatePoints(p))} (${calculatePoints(p)} points)</p>
+      <p>Region: ${p.region}</p>
+      <p>Overall: ${p.overall}</p>
+      <p>Tiers:</p>
+      <ul>
+        ${Object.entries(p.tiers).map(t => `<li>${t[0]}: ${t[1]}</li>`).join("")}
+      </ul>
+    `;
+    modal.classList.remove("hidden");
+  }
+
+  fetch("data/players.json")
+    .then(res => res.json())
+    .then(players => {
+      // Overall leaderboard
+      const list = document.getElementById("overall-list");
+      if (list) {
+        players
+          .sort((a,b) => a.overall - b.overall)
+          .slice(0,50)
+          .forEach(p => {
+            const div = document.createElement("div");
+            div.className = "row";
+            div.innerHTML = `
+              <span>${p.overall}</span>
+              <span>${p.name}</span>
+              <span>${getRankTitle(calculatePoints(p))} (${calculatePoints(p)} pts)</span>
+              <span>${p.region}</span>
+              <span>${Object.entries(p.tiers).map(t => `${t[1]}: ${t[0]}`).join(", ")}</span>
+            `;
+            div.onclick = () => alertPlayer(p);
+            list.appendChild(div);
+          });
+      }
+
+      // Search
+      const input = document.getElementById("search");
+      if (input) {
+        input.addEventListener("change", e => {
+          const found = players.find(p => p.name.toLowerCase() === e.target.value.toLowerCase());
+          if (found) alertPlayer(found);
+        });
+      }
+
+      // Expose alertPlayer for gamemode badges
+      window.alertPlayer = alertPlayer;
+    });
+});
