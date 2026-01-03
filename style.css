@@ -70,6 +70,40 @@ h2 {
   display: none;
 }
 
+#player-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10,10,10,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #0b1a2a;
+  border: 2px solid #d4af37;
+  border-radius: 12px;
+  padding: 24px;
+  min-width: 300px;
+  max-width: 500px;
+  color: #f5f5dc;
+  position: relative;
+}
+
+#close-modal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ffd700;
+}
+
 .modal-badge, .badge {
   display: inline-block;
   padding: 4px 7px;
@@ -86,3 +120,6 @@ h2 {
   transform: translateY(-3px);
   box-shadow: 0 0 10px #ffd700, 0 4px 8px rgba(212,175,55,0.7);
 }
+
+/* FINAL — FORCE MODAL DEAD */
+#player-modal { display: none !important; pointer-events: none !important; }
