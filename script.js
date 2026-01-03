@@ -57,41 +57,10 @@ function renderOverall(players) {
         <span>${p.region || 'N/A'}</span>
         <span>${Object.entries(p.tiers).map(t => `${t[1]}: ${t[0]}`).join(", ")}</span>
       `;
-      div.onclick = () => openPlayer(p);
+      div.onclick = () => openPlayer(p); // openPlayer overridden below
       list.appendChild(div);
     });
 }
-
-// ===============================
-// PLAYER MODAL
-// ===============================
-function openPlayer(p) {
-  const modal = document.getElementById("player-modal");
-  const body = document.getElementById("modal-body");
-
-  body.innerHTML = `
-    <strong>${p.name}</strong><br>
-    Rank: ${getRankTitle(calculatePoints(p))}<br>
-    Region: ${p.region || 'N/A'}<br>
-    Overall Points: ${calculatePoints(p)}<br><br>
-    <strong>Tiers:</strong><br>
-    ${Object.entries(p.tiers).map(t => `${t[0]}: ${t[1]}`).join("<br>")}
-  `;
-
-  modal.classList.remove("hidden");
-}
-
-// Close modal with X
-document.getElementById("close-modal").addEventListener("click", () => {
-  document.getElementById("player-modal").classList.add("hidden");
-});
-
-// Close modal by clicking outside content
-document.getElementById("player-modal").addEventListener("click", (e) => {
-  if (e.target.id === "player-modal") {
-    document.getElementById("player-modal").classList.add("hidden");
-  }
-});
 
 // ===============================
 // SEARCH FUNCTIONALITY
@@ -103,7 +72,7 @@ function setupSearch(players) {
   input.addEventListener("change", e => {
     const name = e.target.value.toLowerCase();
     const found = players.find(p => p.name.toLowerCase() === name);
-    if (found) openPlayer(found);
+    if (found) openPlayer(found); // openPlayer overridden below
   });
 }
 
@@ -138,3 +107,22 @@ function setupGamemode(players) {
   // Change gamemode
   select.addEventListener("change", e => renderMode(e.target.value));
 }
+
+// ===============================
+// REMOVE PLAYER MODAL COMPLETELY
+// ===============================
+const modal = document.getElementById("player-modal");
+if (modal) modal.remove();
+
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    mutation.addedNodes.forEach((node) => {
+      if (node.id === "player-modal") node.remove();
+    });
+  });
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+// Override openPlayer function so it does nothing
+function openPlayer() { /* modal disabled */ }
