@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Zeqa Tiers | Gamemodes</title>
+  <title>Zeqa Tiers – Gamemodes</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -10,9 +10,9 @@
 <header class="topbar">
   <h1>ZEQA TIERS</h1>
   <select id="mode-select">
-    <option value="boxing">Boxing</option>
-    <option value="mace">Mace</option>
     <option value="crystal">Crystal</option>
+    <option value="mace">Mace</option>
+    <option value="boxing">Boxing</option>
     <option value="bridge">Bridge</option>
     <option value="fireball_fight">Fireball Fight</option>
     <option value="fireball_mace">Fireball Mace</option>
@@ -25,11 +25,19 @@
 </header>
 
 <div class="tiers">
-  <div class="tier"><h2>Tier 1</h2></div>
-  <div class="tier"><h2>Tier 2</h2></div>
-  <div class="tier"><h2>Tier 3</h2></div>
-  <div class="tier"><h2>Tier 4</h2></div>
-  <div class="tier"><h2>Tier 5</h2></div>
+  <div class="tier navy" id="t1"><h2>Tier 1</h2><div class="tier-list"></div></div>
+  <div class="tier navy" id="t2"><h2>Tier 2</h2><div class="tier-list"></div></div>
+  <div class="tier navy" id="t3"><h2>Tier 3</h2><div class="tier-list"></div></div>
+  <div class="tier navy" id="t4"><h2>Tier 4</h2><div class="tier-list"></div></div>
+  <div class="tier navy" id="t5"><h2>Tier 5</h2><div class="tier-list"></div></div>
+</div>
+
+<!-- PLAYER MODAL -->
+<div id="player-modal" class="hidden">
+  <div class="modal-content">
+    <span id="close-modal">&times;</span>
+    <div id="modal-body"></div>
+  </div>
 </div>
 
 <script src="script.js"></script>
