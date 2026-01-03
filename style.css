@@ -156,3 +156,63 @@ h2 {
 .badge.LT1, .badge.LT2, .badge.LT3, .badge.LT4, .badge.LT5 {
   background: #bfa12e;
 }
+/* ===============================
+   RESPONSIVE DESIGN
+================================ */
+@media (max-width: 1024px) {
+  /* Tiers stack vertically on tablets */
+  .tiers {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Table adjusts for small screens */
+  .row {
+    grid-template-columns: 40px 1fr 1fr; /* # | Name | Details */
+    padding: 10px;
+  }
+
+  .row span:nth-child(3), /* Rank */
+  .row span:nth-child(4), /* Region */
+  .row span:nth-child(5)  /* Tiers */
+  {
+    display: block;
+    font-size: 12px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  input, select {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 1fr; /* One column per row */
+    padding: 8px;
+  }
+
+  .row span {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .tiers .tier {
+    padding: 10px;
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+}
