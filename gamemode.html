@@ -25,14 +25,14 @@
 </header>
 
 <div class="tiers">
-  <div class="tier" id="t1"><h2>Tier 1</h2><div class="tier-list"></div></div>
-  <div class="tier" id="t2"><h2>Tier 2</h2><div class="tier-list"></div></div>
-  <div class="tier" id="t3"><h2>Tier 3</h2><div class="tier-list"></div></div>
-  <div class="tier" id="t4"><h2>Tier 4</h2><div class="tier-list"></div></div>
-  <div class="tier" id="t5"><h2>Tier 5</h2><div class="tier-list"></div></div>
+  <div class="tier navy" id="t1"><h2>Tier 1</h2><div class="tier-list"></div></div>
+  <div class="tier navy" id="t2"><h2>Tier 2</h2><div class="tier-list"></div></div>
+  <div class="tier navy" id="t3"><h2>Tier 3</h2><div class="tier-list"></div></div>
+  <div class="tier navy" id="t4"><h2>Tier 4</h2><div class="tier-list"></div></div>
+  <div class="tier navy" id="t5"><h2>Tier 5</h2><div class="tier-list"></div></div>
 </div>
 
-<!-- Player Modal -->
+<!-- PLAYER MODAL -->
 <div id="player-modal" class="hidden">
   <div class="modal-content">
     <span id="close-modal">&times;</span>
@@ -42,29 +42,35 @@
 
 <script src="script.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+  // ===============================
+  // GAMEMODE TIER RENDERING
+  // ===============================
   fetch("data/players.json")
     .then(res => res.json())
     .then(players => {
       const select = document.getElementById("mode-select");
 
       function renderMode(mode) {
-        for (let i = 1; i <= 5; i++)
+        for (let i = 1; i <= 5; i++) {
           document.querySelector(`#t${i} .tier-list`).innerHTML = "";
+        }
 
         const modePlayers = players.filter(p => p.tiers[mode]);
         modePlayers.forEach(p => {
           const tier = p.tiers[mode];
           const tierNumber = parseInt(tier[1]);
-          const badge = `<span class="badge ${tier}" onclick="alertPlayer(${JSON.stringify(p)})">${tier} ${p.name}</span>`;
+          const badge = `<span class="badge ${tier}">${tier} ${p.name}</span>`;
           document.querySelector(`#t${tierNumber} .tier-list`).innerHTML += badge;
         });
       }
 
       renderMode(select.value);
-      select.addEventListener("change", e => renderMode(e.target.value));
+
+      select.addEventListener("change", e => {
+        renderMode(e.target.value);
+      });
     });
-});
 </script>
+
 </body>
 </html>
