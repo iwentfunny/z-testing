@@ -1,56 +1,164 @@
+/* ===============================
+   GLOBAL STYLES
+================================ */
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  background: #0b0b0f;
-  color: #eaeaea;
-  font-family: Arial, sans-serif;
+  background: #0a0a0a;      /* Black background */
+  color: #f5f5dc;           /* Light goldish text */
+  font-family: "Segoe UI", "Verdana", "Helvetica", "sans-serif"; /* Clean sans-serif */
 }
+
+/* ===============================
+   HEADER / TOP BAR
+================================ */
 
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  background: #0e1625;
+  padding: 16px 24px;
+  background: #0b1a2a;      /* Dark navy */
+  border-bottom: 2px solid #d4af37; /* Gold accent line */
 }
 
-input, select {
-  background: #111827;
-  color: white;
-  border: none;
-  padding: 8px;
-  border-radius: 8px;
+.topbar h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #d4af37; /* Gold title */
 }
+
+.topbar input, .topbar select {
+  background: #0b1a2a;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #f5f5dc;
+  font-weight: 500;
+  outline: none;
+}
+
+.topbar input::placeholder {
+  color: #f0e68c;
+}
+
+/* ===============================
+   TABLE / OVERALL LIST
+================================ */
 
 .table {
-  padding: 20px;
+  margin: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #1c2f4a;
 }
 
 .row {
   display: grid;
-  grid-template-columns: 50px 1fr 2fr 80px 3fr;
-  padding: 12px;
-  border-bottom: 1px solid #1f2937;
+  grid-template-columns: 50px 1.2fr 2fr 100px 3fr;
+  padding: 14px 16px;
+  border-bottom: 1px solid #1c2f4a;
+  align-items: center;
 }
 
-.row:hover {
-  background: #111827;
+.row:last-child {
+  border-bottom: none;
+}
+
+.row.header {
+  background: #0b1a2a;
+  font-weight: 600;
+  color: #d4af37;
+}
+
+.row:not(.header):hover {
+  background: #102240;
   cursor: pointer;
 }
 
-.header {
-  font-weight: bold;
-  color: #9ca3af;
+/* ===============================
+   TIER BADGES
+================================ */
+
+.badge {
+  display: inline-block;
+  padding: 4px 7px;
+  margin: 3px 4px 3px 0;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #0a0a0a; /* dark text for contrast */
 }
+
+/* Gold & Navy Tier Colors */
+.HT1 { background: #ffd700; } /* Bright Gold */
+.LT1 { background: #c9a227; }
+
+.HT2 { background: #ffca50; }
+.LT2 { background: #b48c2b; }
+
+.HT3 { background: #f5d86e; color: #0a0a0a; }
+.LT3 { background: #bfa240; color: #0a0a0a; }
+
+.HT4 { background: #4d6fff; } /* Navy blue accent */
+.LT4 { background: #2f4eb8; }
+
+.HT5 { background: #9a9a9a; }
+.LT5 { background: #6f6f6f; }
+
+/* ===============================
+   GAMEMODE TIERS PANELS
+================================ */
 
 .tiers {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   padding: 20px;
 }
 
 .tier {
   flex: 1;
-  background: #0f1b2d;
+  background: #0b1a2a;   /* Navy background for panels */
+  border: 2px solid #d4af37; /* Gold outline */
   border-radius: 12px;
   padding: 12px;
+}
+
+.tier h2 {
+  margin-top: 0;
+  color: #ffd700; /* Gold tier title */
+  text-align: center;
+}
+
+/* ===============================
+   HIDDEN CLASS FOR MODALS
+================================ */
+
+.hidden {
+  display: none;
+}
+
+/* ===============================
+   BUTTONS / INTERACTIONS
+================================ */
+
+button {
+  background: #d4af37;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: 600;
+  color: #0a0a0a;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ffdd57;
 }
