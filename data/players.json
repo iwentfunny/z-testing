@@ -1,0 +1,79 @@
+[
+  {
+    "name": "iwentfunny",
+    "rank": "Combat Cadet",
+    "region": "NA",
+    "tiers": {
+      "mace": "HT2",
+      "fireball_mace": "HT1"
+    }
+  },
+  {
+    "name": "henogi",
+    "rank": "Combat Cadet",
+    "region": "EU",
+    "tiers": {
+      "fireball_fight": "HT1",
+      "fireball_mace": "HT3"
+    }
+  },
+  {
+    "name": "ttvgoat7141",
+    "rank": "Combat Specialist",
+    "region": "NA",
+    "tiers": {
+      "battlerush": "HT4",
+      "crystal": "HT1",
+      "mace": "HT3"
+    }
+  },
+  {
+    "name": "lalich12",
+    "rank": "Combat Ace",
+    "region": "NA",
+    "tiers": {
+      "fireball_fight": "HT3",
+      "bedfight": "LT3"
+    }
+  },
+  {
+    "name": "n1co.lite",
+    "rank": "Combat Novice",
+    "region": "NA",
+    "tiers": {
+      "boxing": "HT5"
+    }
+  },
+  {
+    "name": "Lukas",
+    "rank": "Combat Ace",
+    "region": "NA",
+    "tiers": {
+      "mace": "LT3"
+    }
+  },
+  {
+    "name": "Blaze4718",
+    "rank": "Combat Specialist",
+    "region": "NA",
+    "tiers": {
+      "bedfight": "HT4"
+    }
+  },
+  {
+    "name": "JesterPVP100",
+    "rank": "Combat Ace",
+    "region": "NA",
+    "tiers": {
+      "boxing": "HT3"
+    }
+  },
+  {
+    "name": "Rogueriane",
+    "rank": "Combat Novice",
+    "region": "NA",
+    "tiers": {
+      "mace": "LT3"
+    }
+  }
+]
