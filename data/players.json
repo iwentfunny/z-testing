@@ -3,15 +3,19 @@
     "name": "iwentfunny",
     "rank": "Combat Cadet",
     "region": "NA",
+    "points": 30,
+    "overall": 1,
     "tiers": {
       "mace": "HT2",
       "fireball_mace": "HT1"
     }
   },
   {
-    "name": "henogi",
+    "name": "henogiMC",
     "rank": "Combat Cadet",
     "region": "EU",
+    "points": 60,
+    "overall": 2,
     "tiers": {
       "fireball_fight": "HT1",
       "fireball_mace": "HT3"
@@ -19,8 +23,10 @@
   },
   {
     "name": "ttvgoat7141",
-    "rank": "Combat Specialist",
+    "rank": "Combat Ace",
     "region": "NA",
+    "points": 90,
+    "overall": 3,
     "tiers": {
       "battlerush": "HT4",
       "crystal": "HT1",
@@ -31,47 +37,59 @@
     "name": "lalich12",
     "rank": "Combat Ace",
     "region": "NA",
+    "points": 46,
+    "overall": 4,
     "tiers": {
       "fireball_fight": "HT3",
       "bedfight": "LT3"
     }
   },
   {
-    "name": "n1co.lite",
-    "rank": "Combat Novice",
-    "region": "NA",
-    "tiers": {
-      "boxing": "HT5"
-    }
-  },
-  {
-    "name": "Lukas",
-    "rank": "Combat Ace",
-    "region": "NA",
-    "tiers": {
-      "mace": "LT3"
-    }
-  },
-  {
     "name": "Blaze4718",
     "rank": "Combat Specialist",
     "region": "NA",
+    "points": 4,
+    "overall": 5,
     "tiers": {
       "bedfight": "HT4"
     }
   },
   {
-    "name": "JesterPVP100",
-    "rank": "Combat Ace",
+    "name": "Jester…Guy",
+    "rank": "Combat Specialist",
     "region": "NA",
+    "points": 10,
+    "overall": 6,
     "tiers": {
       "boxing": "HT3"
+    }
+  },
+  {
+    "name": "n1co.lite",
+    "rank": "Combat Novice",
+    "region": "NA",
+    "points": 2,
+    "overall": 7,
+    "tiers": {
+      "boxing": "HT5"
     }
   },
   {
     "name": "Rogueriane",
     "rank": "Combat Novice",
     "region": "NA",
+    "points": 6,
+    "overall": 8,
+    "tiers": {
+      "mace": "LT3"
+    }
+  },
+  {
+    "name": "Lukas",
+    "rank": "Combat Specialist",
+    "region": "NA",
+    "points": 6,
+    "overall": 9,
     "tiers": {
       "mace": "LT3"
     }
