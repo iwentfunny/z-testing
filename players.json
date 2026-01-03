@@ -1,88 +1,11 @@
 [
-  {
-    "name": "henogiMC",
-    "region": "EU",
-    "points": 70,
-    "overall": 2,
-    "tiers": {
-      "fireball_fight": "HT1",
-      "fireball_mace": "HT3"
-    }
-  },
-  {
-    "name": "n1co.lite",
-    "region": "NA",
-    "points": 2,
-    "overall": 9,
-    "tiers": {
-      "boxing": "HT5"
-    }
-  },
-  {
-    "name": "lalich12",
-    "region": "NA",
-    "points": 16,
-    "overall": 5,
-    "tiers": {
-      "fireball_fight": "HT3",
-      "bedfight": "LT3"
-    }
-  },
-  {
-    "name": "Lukas",
-    "region": "NA",
-    "points": 3,
-    "overall": 8,
-    "tiers": {
-      "mace": "LT3"
-    }
-  },
-  {
-    "name": "iwentfunny",
-    "region": "NA",
-    "points": 62,
-    "overall": 3,
-    "tiers": {
-      "mace": "HT2",
-      "fireball_mace": "HT1"
-    }
-  },
-  {
-    "name": "ttvgoat7141",
-    "region": "NA",
-    "points": 124,
-    "overall": 1,
-    "tiers": {
-      "battlerush": "HT4",
-      "crystal": "HT1",
-      "mace": "HT3"
-    }
-  },
-  {
-    "name": "Jester… Guy",
-    "region": "NA",
-    "points": 10,
-    "overall": 6,
-    "tiers": {
-      "boxing": "HT3"
-    }
-  },
-  {
-    "name": "Blaze4718",
-    "region": "NA",
-    "points": 60,
-    "overall": 4,
-    "tiers": {
-      "bedfight": "HT4"
-    }
-  },
-  {
-    "name": "Rogueriane",
-    "region": "NA",
-    "points": 6,
-    "overall": 7,
-    "tiers": {
-      "mace": "LT3"
-    }
-  }
+  {"name":"ttvgoat7141","region":"NA","tiers":{"battlerush":"HT4","crystal":"HT1","mace":"HT3"}},
+  {"name":"iwentfunny","region":"NA","tiers":{"mace":"LT2","fireball_mace":"HT1"}},
+  {"name":"henogiMC","region":"NA","tiers":{"fireball_fight":"HT1","fireball_mace":"HT3"}},
+  {"name":"lalich12","region":"NA","tiers":{"fireball_fight":"HT3","bedfight":"LT3"}},
+  {"name":"Blaze4718","region":"NA","tiers":{"bedfight":"HT4"}},
+  {"name":"Jester… Guy","region":"NA","tiers":{"boxing":"HT3"}},
+  {"name":"Lukas","region":"NA","tiers":{"mace":"LT3"}},
+  {"name":"n1co.lite","region":"NA","tiers":{"boxing":"HT5"}},
+  {"name":"Rogueriane","region":"NA","tiers":{"mace":"LT3"}}
 ]
