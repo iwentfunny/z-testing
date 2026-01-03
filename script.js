@@ -57,7 +57,7 @@ function renderOverall(players) {
         <span>${p.region || 'N/A'}</span>
         <span>${Object.entries(p.tiers).map(t => `${t[1]}: ${t[0]}`).join(", ")}</span>
       `;
-      div.onclick = () => openPlayer(p); // openPlayer overridden below
+      div.onclick = () => openPlayer(p); // overridden below
       list.appendChild(div);
     });
 }
@@ -72,7 +72,7 @@ function setupSearch(players) {
   input.addEventListener("change", e => {
     const name = e.target.value.toLowerCase();
     const found = players.find(p => p.name.toLowerCase() === name);
-    if (found) openPlayer(found); // openPlayer overridden below
+    if (found) openPlayer(found); // overridden below
   });
 }
 
@@ -93,7 +93,7 @@ function setupGamemode(players) {
     const modePlayers = players.filter(p => p.tiers[mode]);
 
     modePlayers.forEach(p => {
-      const tier = p.tiers[mode];          // e.g., "HT1"
+      const tier = p.tiers[mode];           // e.g., "HT1"
       const tierNumber = parseInt(tier[1]); // 1-5
       const badge = `<span class="badge ${tier}">${tier} ${p.name}</span>`;
       const container = document.querySelector(`#t${tierNumber} .tier-list`);
@@ -114,6 +114,7 @@ function setupGamemode(players) {
 const modal = document.getElementById("player-modal");
 if (modal) modal.remove();
 
+// Observe future modals being added dynamically
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     mutation.addedNodes.forEach((node) => {
@@ -124,5 +125,5 @@ const observer = new MutationObserver((mutations) => {
 
 observer.observe(document.body, { childList: true, subtree: true });
 
-// Override openPlayer function so it does nothing
+// Disable modal entirely
 function openPlayer() { /* modal disabled */ }
