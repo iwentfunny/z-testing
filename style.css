@@ -1,91 +1,79 @@
 body {
-  background: #0b0b0f;
-  color: #f5f5dc;
-  font-family: "Serif", "Segoe UI", Arial, sans-serif;
   margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0f17;
+  color: #eaeaea;
 }
 
 .topbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 16px;
-  background: #0a0f1f;
-  border-bottom: 2px solid #d4af37;
+  padding: 15px 20px;
+  background: #0f1624;
 }
 
-input, select {
-  background: #111;
-  color: #ffd700;
-  border-radius: 8px;
-  padding: 8px;
+input {
+  padding: 8px 12px;
+  background: #121a2a;
   border: none;
-  font-size: 14px;
+  color: white;
+  border-radius: 6px;
 }
 
-h1 {
-  margin: 0;
-  color: #ffd700;
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.table {
-  margin: 20px;
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 50px 1fr 2fr 80px 3fr;
+th, td {
   padding: 12px;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #1e2a3a;
 }
 
-.row:hover {
-  background: #14141c;
+tr:hover {
+  background: #141d2e;
+}
+
+/* ❌ Remove yellow glow */
+tr:first-child,
+tr:first-child td {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.gamemodes {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gamemodes button {
+  background: #121a2a;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-.header {
-  font-weight: bold;
-  color: #aaa;
+.gamemodes button:hover {
+  background: #1b2840;
 }
 
 .tiers {
-  display: flex;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
   padding: 20px;
 }
 
 .tier {
-  flex: 1;
-  background: #0f1b2d;
-  border-radius: 12px;
-  padding: 12px;
+  background: #121a2a;
+  border-radius: 10px;
+  padding: 10px;
 }
 
-h2 {
-  color: #ffd700;
+.tier h3 {
+  margin-top: 0;
 }
-
-.hidden {
-  display: none;
-}
-
-.modal-badge, .badge {
-  display: inline-block;
-  padding: 4px 7px;
-  margin: 3px 4px 3px 0;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #0a0a0a;
-  background: #d4af37;
-  cursor: pointer;
-}
-
-.badge:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 10px #ffd700, 0 4px 8px rgba(212,175,55,0.7);
-}
-
-/* ---------- FINAL: Modal completely gone ---------- */
-#player-modal { display: none !important; pointer-events: none !important; }
