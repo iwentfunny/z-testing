@@ -1,51 +1,40 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", system-ui, sans-serif;
   background: #0b0f17;
   color: #eaeaea;
 }
 
+/* Top bar */
 .topbar {
   display: flex;
   justify-content: space-between;
-  padding: 15px 20px;
+  align-items: center;
+  padding: 16px 22px;
   background: #0f1624;
 }
 
+.topbar h1 {
+  margin: 0;
+  font-weight: 800;
+}
+
 input {
-  padding: 8px 12px;
+  padding: 8px 14px;
   background: #121a2a;
   border: none;
   color: white;
-  border-radius: 6px;
+  border-radius: 8px;
+  outline: none;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 12px;
-  border-bottom: 1px solid #1e2a3a;
-}
-
-tr:hover {
-  background: #141d2e;
-}
-
-/* ❌ Remove yellow glow */
-tr:first-child,
-tr:first-child td {
-  box-shadow: none !important;
-  text-shadow: none !important;
-}
-
+/* Gamemode tabs */
 .gamemodes {
-  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  padding: 12px;
+  background: #0c1220;
 }
 
 .gamemodes button {
@@ -53,27 +42,75 @@ tr:first-child td {
   color: white;
   border: none;
   padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: 999px;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .gamemodes button:hover {
   background: #1b2840;
 }
 
+/* Tier grid */
 .tiers {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
   padding: 20px;
 }
 
 .tier {
   background: #121a2a;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 14px;
+  padding: 12px;
 }
 
+/* Tier headers */
 .tier h3 {
-  margin-top: 0;
+  text-align: center;
+  margin: 0 0 12px 0;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Tier colors */
+.tier-1 h3 {
+  background: linear-gradient(135deg, #f7c948, #d4a017);
+  color: #1a1200;
+}
+
+.tier-2 h3 {
+  background: linear-gradient(135deg, #cfd8dc, #9ea7ad);
+  color: #111;
+}
+
+.tier-3 h3 {
+  background: linear-gradient(135deg, #cd7f32, #a45a1a);
+  color: #1a0d00;
+}
+
+.tier-4 h3 {
+  background: #1c2738;
+}
+
+.tier-5 h3 {
+  background: #141b2b;
+}
+
+/* Player list */
+.tier ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tier li {
+  padding: 6px 8px;
+  border-bottom: 1px solid #1e2a3a;
+}
+
+.tier li:last-child {
+  border-bottom: none;
 }
