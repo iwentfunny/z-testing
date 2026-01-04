@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>ZEQA Tiers</title>
+
+  <!-- Rounded font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,31 +17,23 @@
 </header>
 
 <nav class="gamemodes">
-  <button onclick="goGamemode('crystal')">Crystal</button>
-  <button onclick="goGamemode('boxing')">Boxing</button>
-  <button onclick="goGamemode('mace')">Mace</button>
-  <button onclick="goGamemode('fireball_fight')">Fireball Fight</button>
-  <button onclick="goGamemode('fireball_mace')">Fireball Mace</button>
-  <button onclick="goGamemode('builduhc')">Build UHC</button>
-  <button onclick="goGamemode('finaluhc')">Final UHC</button>
-  <button onclick="goGamemode('nodebuff')">NoDebuff</button>
-  <button onclick="goGamemode('battlerush')">BattleRush</button>
-  <button onclick="goGamemode('bridge')">Bridge</button>
-  <button onclick="goGamemode('bedfight')">Bedfight</button>
+  <button onclick="loadGamemode('crystal')">💎 Crystal</button>
+  <button onclick="loadGamemode('boxing')">🥊 Boxing</button>
+  <button onclick="loadGamemode('mace')">🔨 Mace</button>
+  <button onclick="loadGamemode('fireball_fight')">🔥 Fireball Fight</button>
+  <button onclick="loadGamemode('fireball_mace')">🔥🔨 Fireball Mace</button>
+  <button onclick="loadGamemode('builduhc')">🧱 Build UHC</button>
+  <button onclick="loadGamemode('finaluhc')">⚔️ Final UHC</button>
+  <button onclick="loadGamemode('nodebuff')">🧪 NoDebuff</button>
+  <button onclick="loadGamemode('battlerush')">⚡ BattleRush</button>
+  <button onclick="loadGamemode('bridge')">🌉 Bridge</button>
+  <button onclick="loadGamemode('bedfight')">🛏️ Bedfight</button>
 </nav>
 
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Player</th>
-      <th>Rank</th>
-      <th>Region</th>
-      <th>Tiers</th>
-    </tr>
-  </thead>
-  <tbody id="rankingTable"></tbody>
-</table>
+<!-- Main content -->
+<main>
+  <div id="tiersContainer" class="tiers"></div>
+</main>
 
 <script src="script.js"></script>
 </body>
