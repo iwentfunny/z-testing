@@ -2,34 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Zeqa Tiers – Overall</title>
+  <title>ZEQA Tiers</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="topbar">
   <h1>ZEQA TIERS</h1>
-  <input id="search" placeholder="Search player..." />
+  <input id="searchInput" type="text" placeholder="Search player...">
 </header>
 
-<div class="table">
-  <div class="row header">
-    <span>#</span>
-    <span>Player</span>
-    <span>Rank</span>
-    <span>Region</span>
-    <span>Tiers</span>
-  </div>
-  <div id="overall-list"></div>
-</div>
+<nav class="gamemodes">
+  <button onclick="goGamemode('crystal')">Crystal</button>
+  <button onclick="goGamemode('boxing')">Boxing</button>
+  <button onclick="goGamemode('mace')">Mace</button>
+  <button onclick="goGamemode('fireball_fight')">Fireball Fight</button>
+  <button onclick="goGamemode('fireball_mace')">Fireball Mace</button>
+  <button onclick="goGamemode('builduhc')">Build UHC</button>
+  <button onclick="goGamemode('finaluhc')">Final UHC</button>
+  <button onclick="goGamemode('nodebuff')">NoDebuff</button>
+  <button onclick="goGamemode('battlerush')">BattleRush</button>
+  <button onclick="goGamemode('bridge')">Bridge</button>
+  <button onclick="goGamemode('bedfight')">Bedfight</button>
+</nav>
 
-<!-- PLAYER MODAL -->
-<div id="player-modal" class="hidden">
-  <div class="modal-content">
-    <span id="close-modal">&times;</span>
-    <div id="modal-body"></div>
-  </div>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Player</th>
+      <th>Rank</th>
+      <th>Region</th>
+      <th>Tiers</th>
+    </tr>
+  </thead>
+  <tbody id="rankingTable"></tbody>
+</table>
 
 <script src="script.js"></script>
 </body>
