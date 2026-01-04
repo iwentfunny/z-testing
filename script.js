@@ -1,129 +1,75 @@
-// ===============================
-// TIER POINTS
-// ===============================
-const TIER_POINTS = {
-  HT1: 60, LT1: 45,
-  HT2: 30, LT2: 20,
-  HT3: 10, LT3: 6,
-  HT4: 4,  LT4: 3,
-  HT5: 2,  LT5: 1
-};
+let players = {};
 
-// Calculate total points for a player
-function calculatePoints(player) {
-  return Object.values(player.tiers)
-    .reduce((total, tier) => total + (TIER_POINTS[tier] || 0), 0);
-}
-
-// Get rank title based on points
-function getRankTitle(points) {
-  if (points >= 400) return "Combat Grandmaster";
-  if (points >= 250) return "Combat Master";
-  if (points >= 100) return "Combat Ace";
-  if (points >= 50)  return "Combat Specialist";
-  if (points >= 20)  return "Combat Cadet";
-  return "Combat Novice";
-}
-
-// ===============================
-// FETCH PLAYERS.JSON
-// ===============================
 fetch("data/players.json")
   .then(res => res.json())
-  .then(players => {
-    renderOverall(players);
-    setupSearch(players);
-    setupGamemode(players);
+  .then(data => {
+    players = data;
+    if (document.getElementById("rankingTable")) loadLeaderboard();
+    if (document.getElementById("tiersContainer")) loadGamemodePage();
   });
 
-// ===============================
-// RENDER OVERALL LIST
-// ===============================
-function renderOverall(players) {
-  const list = document.getElementById("overall-list");
-  if (!list) return;
+function loadLeaderboard() {
+  const table = document.getElementById("rankingTable");
+  let i = 1;
 
-  // Sort by total points descending
-  players
-    .sort((a, b) => calculatePoints(b) - calculatePoints(a))
-    .slice(0, 50)
-    .forEach((p, i) => {
-      const div = document.createElement("div");
-      div.className = "row";
-      div.innerHTML = `
-        <span>${i + 1}</span>
-        <span>${p.name}</span>
-        <span>${getRankTitle(calculatePoints(p))} (${calculatePoints(p)} pts)</span>
-        <span>${p.region || 'N/A'}</span>
-        <span>${Object.entries(p.tiers).map(t => `${t[1]}: ${t[0]}`).join(", ")}</span>
-      `;
-      div.onclick = () => openPlayer(p); // overridden below
-      list.appendChild(div);
-    });
-}
-
-// ===============================
-// SEARCH FUNCTIONALITY
-// ===============================
-function setupSearch(players) {
-  const input = document.getElementById("search");
-  if (!input) return;
-
-  input.addEventListener("change", e => {
-    const name = e.target.value.toLowerCase();
-    const found = players.find(p => p.name.toLowerCase() === name);
-    if (found) openPlayer(found); // overridden below
-  });
-}
-
-// ===============================
-// GAMEMODE TIER RENDERING
-// ===============================
-function setupGamemode(players) {
-  const select = document.getElementById("mode-select");
-  if (!select) return;
-
-  function renderMode(mode) {
-    // Clear tier lists
-    for (let i = 1; i <= 5; i++) {
-      document.querySelector(`#t${i} .tier-list`).innerHTML = "";
-    }
-
-    // Filter players who have a tier for this gamemode
-    const modePlayers = players.filter(p => p.tiers[mode]);
-
-    modePlayers.forEach(p => {
-      const tier = p.tiers[mode];           // e.g., "HT1"
-      const tierNumber = parseInt(tier[1]); // 1-5
-      const badge = `<span class="badge ${tier}">${tier} ${p.name}</span>`;
-      const container = document.querySelector(`#t${tierNumber} .tier-list`);
-      container.innerHTML += badge;
-    });
+  for (const [name, data] of Object.entries(players)) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${i++}</td>
+      <td>${name}</td>
+      <td>${data.rank}</td>
+      <td>${data.region}</td>
+      <td>${Object.entries(data.gamemodes)
+        .map(([g, t]) => `${g}: ${t}`)
+        .join(", ")}</td>
+    `;
+    table.appendChild(tr);
   }
 
-  // Initial render
-  renderMode(select.value);
-
-  // Change gamemode
-  select.addEventListener("change", e => renderMode(e.target.value));
+  document.getElementById("searchInput").addEventListener("input", e => {
+    filterPlayers(e.target.value);
+  });
 }
 
-// ===============================
-// REMOVE PLAYER MODAL COMPLETELY
-// ===============================
-const modal = document.getElementById("player-modal");
-if (modal) modal.remove();
-
-// Observe future modals being added dynamically
-const observer = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    mutation.addedNodes.forEach((node) => {
-      if (node.id === "player-modal") node.remove();
-    });
+function filterPlayers(query) {
+  document.querySelectorAll("#rankingTable tr").forEach(row => {
+    row.style.display = row.innerText
+      .toLowerCase()
+      .includes(query.toLowerCase())
+      ? ""
+      : "none";
   });
-});
+}
 
-observer.observe(document.body, { childList: true, subtree: true });
+function goGamemode(mode) {
+  window.location.href = `gamemode.html?mode=${mode}`;
+}
 
-// Disable modal entirely
-function openPlayer() { /* modal disabled */ }
+function loadGamemodePage() {
+  const params = new URLSearchParams(window.location.search);
+  const mode = params.get("mode");
+  document.getElementById("modeTitle").innerText =
+    mode.replace("_", " ").toUpperCase();
+
+  const tiers = {};
+
+  for (const [player, data] of Object.entries(players)) {
+    const tier = data.gamemodes[mode];
+    if (!tier) continue;
+    if (!tiers[tier]) tiers[tier] = [];
+    tiers[tier].push(player);
+  }
+
+  const container = document.getElementById("tiersContainer");
+
+  Object.keys(tiers)
+    .sort()
+    .forEach(tier => {
+      const div = document.createElement("div");
+      div.className = "tier";
+      div.innerHTML = `<h3>${tier}</h3><ul>${tiers[tier]
+        .map(p => `<li>${p}</li>`)
+        .join("")}</ul>`;
+      container.appendChild(div);
+    });
+}
